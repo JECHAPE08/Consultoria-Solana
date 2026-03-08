@@ -1,60 +1,45 @@
-# Biblioteca en Solana
+# 📋 Sistema de Consultoría en Solana
 
-![banner](./images/banner-biblioteca.jpg)
+![banner](./images/banner-consultoria.jpg)
 
-CRUD básico de un Solana Program desarrollado con Rust y Anchor desde el Solana Playground. 
+> Smart Contract en Solana para la gestión descentralizada de citas y consultorías en la blockchain.
 
-Puedes comenzar dándole Fork a este repositorio (abajo te explicamos como 👇), **hemos preparado un entorno de codespaces listo para que no tengas que instalar nada**, solo déjate llevar por la fluidez de los ejercicios y temas desarrollados especialmente para ti. 
+---
 
-Asegúrate de clonar este repositorio a tu cuenta usando el botón **`Fork`**.
+## ¿Qué es Sistema de Consultoría?
 
-![fork](./images/fork.png)
+![consultoria](./images/consultoria.jpg)
 
-## Importando el proyecto 
+Sistema de Consultoría es un programa desplegado en la **blockchain de Solana** que permite a consultores profesionales gestionar sus citas de forma inmutable y descentralizada. Cada consultoría queda almacenada como una cuenta única (PDA) con su **nombre**, **propietario** y un **registro completo de citas** con clientes y fechas.
 
-Ya con el repositorio en tu cuenta lo siguiente que debes hacer copiar el `enlace de tu repositorio`, lo que se puede hacer directamente desdel navegador:
+Desarrollado con **Rust** y el framework **Anchor** como parte del Bootcamp de certificación de la **Solana Foundation**.
 
-![repo](./images/repo.png)
-Posteriormente, lo uniremos con el siguiente enlace en nuestro navegador de preferencia:
+---
 
-```url
-https://beta.solpg.io/
-```
+## Instrucciones del Programa
 
-Lo que nos dará algo parecido a:
+| Instrucción        | Acción     | Descripción                                            |
+| ------------------ | ---------- | ------------------------------------------------------ |
+| `crear_consultoria`| **CREATE** | Registra una nueva consultoría en la blockchain        |
+| `ver_citas`        | **READ**   | Visualiza todas las citas agendadas                    |
+| `agendar_cita`     | **CREATE** | Agrega una nueva cita con cliente y fecha              |
+| `actualizar_fecha` | **UPDATE** | Modifica la fecha de una cita existente                |
+| `eliminar_cita`    | **DELETE** | Elimina una cita específica del registro               |
 
-![url](./images/url.png)
+---
 
-Al pulsar enter seremos enviados al `Solana Playground` con nuestro proyecto abierto:
+## Estructura de Datos
 
-![pg](./images/pg.png)
+Cada consultoría se almacena en su propia cuenta PDA con los siguientes campos:
 
-Para guardarlo solo damos clic en el boton `import` y asignamos un nombre:
+```rust
+pub struct Consultoria {
+    pub owner: Pubkey,        // Wallet del consultor propietario
+    pub nombre: String,       // "Consultoría Legal", "Asesoría Financiera"
+    pub citas: Vec<Cita>,     // Vector dinámico de citas (máx 20)
+}
 
-![import](./images/import.png)
-
-## Preparacion del entorno
-
-Primero conectaremos el entorno con la devnet, lo que tambien procederá a la creación de una wallet. Para eso daremos clic en donde dice **Not Conected**:
-
-![playground1](./images/playground1.png)
-
-Saldrá la siguiente ventana donde daremos en el botón **Continue**:
-
-![wallet](./images/wallet.png)
-
-Como resultado se mostrará la siguiente información:
-
-![status](./images/status.png)
-
-* En verde: el estado de la conexión y el entorno al que se encuentra conectado
-
-* En amarillo: la la dirección de la wallet conectada
-
-* En azul: la cantidad de tokens en la wallet
-
-> ℹ️ ¿Quieres ver el ejemplo de un "Hola Mundo" en Solana?. Da clic aquí: 👉 [Ver Ejemplo](https://github.com/WayLearnLatam/Solana-starter-kit/tree/1fc6349ba63375a3fe223d8d56911bc64765459b/build-deploy)
-
-> ℹ️ ¿Cuentas con una Wallet de [Phantom](https://phantom.com/) que deseas importar?, Da clic aquí para ver como hacerlo: 
-
-👉 [Como Importar una Wallet](https://github.com/WayLearnLatam/Solana-starter-kit/tree/1fc6349ba63375a3fe223d8d56911bc64765459b/import-key-a-playground)
+pub struct Cita {
+    pub cliente: String,      // "Juan Pérez", "María García"
+    pub fecha: String,        // "2024-12-15", "15/12/2024 10:30"
+}
