@@ -1,14 +1,10 @@
 # 📋 Sistema de Consultoría en Solana
 
-![banner](./images/banner-consultoria.jpg)
-
-> Smart Contract en Solana para la gestión descentralizada de citas y consultorías en la blockchain.
+![banner](./images/consultoria.jfif)
 
 ---
 
 ## ¿Qué es Sistema de Consultoría?
-
-![consultoria](./images/consultoria.jpg)
 
 Sistema de Consultoría es un programa desplegado en la **blockchain de Solana** que permite a consultores profesionales gestionar sus citas de forma inmutable y descentralizada. Cada consultoría queda almacenada como una cuenta única (PDA) con su **nombre**, **propietario** y un **registro completo de citas** con clientes y fechas.
 
